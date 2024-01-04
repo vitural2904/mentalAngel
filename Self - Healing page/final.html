@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Search Page</title>
+  <style>
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .search-bar {
+      display: flex;
+      padding: 50px 10px;
+      margin-bottom: 5px;
+    }
+
+    .search-input {
+      flex-grow: 1;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .search-button {
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+
+    .column1 {
+      float: left;
+      width: 40%;
+      padding: 0px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .column {
+      float: left;
+      width: 35%;
+      padding: 0px;
+      box-sizing: border-box;
+      margin-left: 60px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .column2 {
+      float: left;
+      width: 15%;
+      padding: 0l;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .column2 img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .content {
+      margin-top: 10px;
+      position: central;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    body {
+      background-color: rgb(165, 165, 218);
+      background-repeat: no-repeat;
+      background-size: 1440px 5000px;
+      font-family: Verdana;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Bạn muốn tìm kiếm nội dung?">
+      <button class="search-button">Tìm kiếm</button>
+    </div>
+    <div id="main" class="row">
+      <div class="column1">
+        <div class="content">
+          <h1 style="text-align: center;">Podcast</h1>
+          <iframe class="element" data-searchContent="Đắp chăn nằm nghe Tun kể" style="border-radius:12px"
+            src="https://open.spotify.com/embed/episode/005ORCiLzIcTc7aREkVXCw?utm_source=generator" width="90%"
+            height="152" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+            name="Tiếng vỡ của tâm hồn"></iframe>
+          <iframe class="element" data-searchContent="Vì sao tình yêu Đa Số Rất Buồn? - Tri Kỷ Cảm Xúc #304"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/episode/4GXQctDIImPp9G4C2qnMGk?utm_source=generator" width="90%"
+            height="152" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe data-searchContent="138. Ra Đi Trọn Vẹn" class="element" style="border-radius:12px"
+            src="https://open.spotify.com/embed/episode/6psAPdYVE4PXEbBtsdX8fB?utm_source=generator" width="90%"
+            height="152" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="column2">
+        <div class="content">
+          <h1 style="text-align: center;">Sách</h1>
+
+          <a data-searchContent="Bỏ buông buồn buông" class="element" href="https://bom.so/wRudeo"><img
+              src="https://bom.so/68XfSj" alt="Bỏ buông buồn buông">
+          </a>
+          <a data-searchContent="Bỏ buông buồn buông 2" class="element" href="https://shorturl.at/div28"><img
+              src="/home/khanhtty/Downloads/a85c3afb5c3b30c3376dadc0f1280ab7.jpeg" alt="Bỏ buông buồn buông"> </a>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <h1 style="text-align: center;">Video</h1>
+          <iframe data-searchContent="5 giá trị sống" class="element" style="border-radius:12px"
+            src="https://open.spotify.com/embed/episode/0KH3F4H3adYzUyDvtyyjhy/video?utm_source=generator&theme=0"
+            width="496" height="279" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe data-searchContent="the present writer" class="element" style="border-radius:12px"
+            src="https://open.spotify.com/embed/episode/2JnT17lTrqSpTncgpS45sV/video?utm_source=generator" width="496"
+            height="279" frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the search input and content elements
+    const searchInput = document.querySelector('.search-input');
+    const contentElements = document.querySelectorAll('.content > *');
+
+    // Add event listener to the search button
+    document.querySelector('.search-button').addEventListener('click', () => {
+      handleSearch();
+    });
+
+    // Function to handle search
+    function handleSearch() {
+
+      const searchQuery = searchInput.value.toLowerCase()
+      if (searchQuery.trim() == '') window.location = "/";
+      const contentElements = document.querySelectorAll('.element');
+      let foundElement = [];
+      for (let i = 0; i < contentElements.length; i++) {
+        let element = contentElements[i];
+
+        const contentText = element.getAttribute("data-searchContent").toLowerCase()
+
+        if (contentText.includes(searchQuery)) {
+          foundElement.push(element);
+        } else {}
+      };
+      if (foundElement.length == 0)
+        document.getElementById('main').innerHTML = "Không tìm thấy gì";
+      else
+        document.getElementById('main').innerHTML = "";
+      for (let i = 0; i < foundElement.length; i++) {
+        document.getElementById('main').appendChild(foundElement[i]);
+
+      }
+      var a = document.createElement('a');
+      var linkText = document.createTextNode("Quay lại");
+      a.appendChild(linkText);
+      a.title = "Quay lại";
+      a.href = "/";
+
+      document.getElementById('main').appendChild(a);
+    }
+
+    // Add event listener to the search input for Enter key
+    searchInput.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        handleSearch();
+      }
+    });
+
+    // Add event listener to the content elements to handle links
+    contentElements.forEach(element => {
+      element.addEventListener('click', function () {
+        // Replace this code with your own logic to handle the link
+        alert('Link clicked: ' + element.textContent);
+      });
+    });
+  </script>
+</body>
+
+</html>
